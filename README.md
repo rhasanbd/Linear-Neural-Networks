@@ -69,5 +69,5 @@ The tf.keras.layers.Dense class has the following parameters:
 
 Note that by deault Glorot Uniform weight initialization technique is used. Generally the **He initialization** works well with the ReLU activation function (kernel_initializer="he_normal") in deep ANNs. 
 
-- For the LNN model we will initialize the network weights with zero values and will use the sigmoid activation function.
+- For the LNN models we will initialize the network weights with zero values and will use the sigmoid activation function for binary classification and the softmax activation for multi-class classification.
 
