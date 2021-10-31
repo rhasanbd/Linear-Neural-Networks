@@ -5,11 +5,11 @@ If github in unable to render a Jupyter notebook, copy the link of the notebook 
 
 These notebooks provide an introduction to Linear Neural Networks (LNNs). a LNN can learn only linear functions using a single layer of neuron(s). We create LNNs for solving binary and multi-class classification problems.
 
-- Binary Clasification: the logistic regression technique is casted as a LNN model with a single neuron
+- Binary Clasification: the logistic regression model is casted as a LNN model with a single neuron
 
-- Multi-class Classification: the softmax regression technique is casted as a LNN model with multiple neurons in layer. The number of neurons is equal to the number of classes.
+- Multi-class Classification: the softmax regression model is casted as a LNN model with multiple neurons. The number of neurons is equal to the number of classes.
 
-Following is brief description of the notebooks.
+The following gives a brief description of the notebooks.
 
 - Notebook 1: Logistic regression as LNN for binary classification (linearly separable data)
 
@@ -40,9 +40,13 @@ https://keras.io/api/models/
 
 Layers are the basic building blocks of neural networks in Keras: https://keras.io/api/layers/ 
 
-For building a LNN, we only need to add **Dense layers**, which is core layer is Keras: https://keras.io/api/layers/core_layers/dense/
+For building a LNN, we only need to add **Dense layers**, which is a core layer is Keras: https://keras.io/api/layers/core_layers/dense/
 
-Dense layer implements the operation: output = activation(dot(input, kernel) + bias) where activation is the element-wise activation function passed as the activation argument, kernel is a weight matrix created by the layer, and bias is a bias vector created by the layer (only applicable if use_bias is True).
+Dense layer implements the operation: 
+
+        output = activation(dot(input, kernel) + bias) 
+      
+where activation is the element-wise activation function passed as the activation argument, kernel is a weight matrix created by the layer, and bias is a bias vector created by the layer (only applicable if use_bias is True).
 
 The tf.keras.layers.Dense class has the following parameters:
 
@@ -69,5 +73,8 @@ The tf.keras.layers.Dense class has the following parameters:
 
 Note that by deault Glorot Uniform weight initialization technique is used. Generally the **He initialization** works well with the ReLU activation function (kernel_initializer="he_normal") in deep ANNs. 
 
-- For the LNN models we will initialize the network weights with zero values and will use the sigmoid activation function for binary classification and the softmax activation for multi-class classification.
+### Note: Constructing the LNN Model
 
+For constructing the LNN model, we will:
+- Initialize the network weights with zero values
+- Use the sigmoid activation function for binary classification and the softmax activation function for multi-class classification
