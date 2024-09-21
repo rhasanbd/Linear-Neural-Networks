@@ -15,40 +15,51 @@ The following gives a brief description of the notebooks.
 
 - Notebook 2: Logistic regression as LNN for binary classification (linearly non-separable data)
 
-- Notebook 3: Softmax regression as LNN for multi-class classification 
+- Notebook 3: Softmax regression as LNN for multi-class classification
+
+        -- We use learning curves to monitor the model’s performance (accuracy and loss) on both the training and validation data over iterations (epochs).
+
+- Notebook 4: Softmax regression as LNN for multi-class classification (MNIST dataset)
+
+
+        -- We introduce two types of regularization in the LNN model: Weight regularization (L2 or L1), and Early stopping
 
 
 
 
-For creating the LNN, we will use the Keras API with TensorFlow 2.0 as the backend.
+To create the LNN, we utilize the **Keras API with TensorFlow 2.0 as the backend**.
 
 
 ## Create Artificial Neural Networks (ANNs) using Keras
 
-Keras is a high-level Deep Learning API that allows us to easily build, train, evaluate, and execute all sorts of ANNs. TensorFlow 2 has adopted Keras as its official high-level API: tf.keras. It only supports TensorFlow as the backend, but it has the advantage of offering some very useful extra features.
+Keras is a high-level deep learning API that allows us to easily build, train, evaluate, and execute various types of ANNs. TensorFlow 2 has adopted Keras as its official high-level API: tf.keras.
 
-We will use Keras to build the LNN. It involves two steps.
-- Choose a suitable Keras model class & create the model using it
-- Add layers of different types based on the need
+We will use Keras to build the LNN, which involves two steps:
+
+- Choose a suitable Keras model class and create the model using it.
+- Add layers of different types based on the requirements.
+
 
 ### Step 1: Instantiate a Model using the Sequential API
-The Sequential API is a straightforward and simple list of layers. It is limited to single-input, single-output stacks of layers.
-https://keras.io/api/models/
+
+The Sequential API provides a straightforward way to stack layers in a linear fashion. It is limited to single-input and single-output configurations. For more details, visit the Keras Sequential API documentation: https://keras.io/api/models/
 
 
 ### Step 2: Add Suitable Layers
 
-Layers are the basic building blocks of neural networks in Keras: https://keras.io/api/layers/ 
+Layers are the fundamental building blocks of neural networks in Keras. For more information, refer to the Keras Layers documentation: https://keras.io/api/layers/ 
 
-For building an LNN model, we only need to add **Dense layers**, which is a core layer in Keras: https://keras.io/api/layers/core_layers/dense/
+To build an LNN, we primarily need to add Dense layers, which are the core layers in Keras. You can find more about Dense layers in the Keras **Dense Layer** documentation: https://keras.io/api/layers/core_layers/dense/
 
-The dense layer implements the operation: 
+The Dense layer implements the operation: 
 
-        output = activation(dot(input, kernel) + bias) 
-      
-where activation is the element-wise activation function passed as the activation argument, the kernel is a weight matrix created by the layer, and bias is a bias vector created by the layer (only applicable if use_bias is True).
+        output = activation(dot(input, kernel) + bias)
 
-The tf.keras.layers.Dense class has the following parameters:
+where the activation function is applied element-wise, the kernel is a weight matrix created by the layer, and the bias is a bias vector created by the layer (only applicable if use_bias is set to True).
+
+
+
+The tf.keras.layers.Dense class includes the following parameters:
 
 - units: Number of output neurons.
 
@@ -73,6 +84,7 @@ The tf.keras.layers.Dense class has the following parameters:
 
 Note that by default Glorot Uniform weight initialization technique is used. Generally the **He initialization** works well with the ReLU activation function (kernel_initializer="he_normal") in deep ANNs. 
 
+        For the LNN model, we will initialize the network weights with zero values and use the sigmoid activation function for binary classification and the softmax activation function for multi-class classification.
 ### Note: Constructing the LNN Model
 
 For constructing the LNN model, we will:
